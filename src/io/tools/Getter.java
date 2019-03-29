@@ -4,21 +4,22 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Getter {
-        private InputStream is;
+        //private InputStream is;
+        private  Scanner sc;
         public Getter(InputStream is){
-            this.is=is;
+            sc=new Scanner(is);
         }
         public int getSize(String comment){
             int n=1;
             if (comment!=null){
                 System.out.print(comment);
             }
-            try(Scanner sc=new Scanner(is)){
+            //try(Scanner sc=new Scanner(is)){
                 n=sc.nextInt();
                 if (n<1){
                     System.out.println("Size can't be less or equal null");
                 }
-            }
+            //}
             return n;
         }
         public char[] getCharArray(String comment){
@@ -36,12 +37,12 @@ public class Getter {
         private LinkedList<Character> getCharList(){
             String[] chars;
             LinkedList<Character> result=new LinkedList<>();
-            try(Scanner sc=new Scanner(is)){
+            //try(Scanner sc=new Scanner(is)){
                 chars=sc.nextLine().split(" ");
                 for(String ch:chars){
                     result.add(ch.charAt(0));
                 }
-            }
+            //}
             return result;
         }
 
@@ -60,12 +61,12 @@ public class Getter {
         private LinkedList<Integer> getIntList(){
             String[] chars;
             LinkedList<Integer> result=new LinkedList<>();
-            try(Scanner sc=new Scanner(is)){
+            //try(Scanner sc=new Scanner(is)){
                 chars = sc.nextLine().split(" ");
                 for(String ch:chars){
                     result.add(Integer.valueOf(ch));
                 }
-            }
+            //}
             return result;
         }
 
@@ -74,21 +75,21 @@ public class Getter {
                 System.out.print(comment);
             }
             String res;
-            try(Scanner sc=new Scanner(is)) {
+            //try(Scanner sc=new Scanner(is)) {
                 res=sc.nextLine();
-            }
+            //}
             return res;
         }
 
         public LinkedList<String> read(){
             LinkedList<String> sl=new LinkedList<>();
-            try(Scanner sc=new Scanner(is)){
+            //try(Scanner sc=new Scanner(is)){
                 String s;
                 while(sc.hasNextLine()){
                     s=sc.nextLine();
                     sl.add(s);
                 }
-            }
+            //}
             return sl;
         }
 

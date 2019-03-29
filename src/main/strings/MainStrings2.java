@@ -5,8 +5,9 @@ import test.strings.StringOperations;
 public class MainStrings2 {
     public static void main(String[] args){
         Getter getter=new Getter(System.in);
-        char[] seq={'e','l','l'};
+        //char[] seq={'e','l','l'};
         String s=getter.getString("String: ");
+        char[] seq=getter.getCharArray("Char sequence: ");
         boolean check= StringOperations.isContain(s,seq);
         if (check){
             System.out.println("This string contain specified sequence of char ");
