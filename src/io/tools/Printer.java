@@ -63,4 +63,9 @@ public class Printer {
         }
     }
 
+    public void print(String s){
+        PrintStream ps=new PrintStream(os);
+        ps.println(s+delemiter);
+    }
+
 }

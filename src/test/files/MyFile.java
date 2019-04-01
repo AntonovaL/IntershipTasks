@@ -4,6 +4,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.util.LinkedList;
 import java.util.Scanner;
+import io.tools.Getter;
+import io.tools.Printer;
 
 public class MyFile {
     File f;
@@ -34,18 +36,23 @@ public class MyFile {
 
     public  void splitOnParts(String firstFileName, String secondFileName, int pr) throws IOException {
             FileInputStream fis=new FileInputStream(f);
-            double size = f.length();
+            Getter getter=new Getter(fis);
+            LinkedList<String> ls=getter.read();
+            double size = ls.size();
             double part1 = size * pr / 100;
             double part2 = size - part1;
             FileOutputStream out1 = new FileOutputStream(firstFileName);
             FileOutputStream out2 = new FileOutputStream(secondFileName);
-            double read = 0;
-            int b;
-            while ((b = fis.read()) >= 0) {
-                if(++read<=part1)
-                    out1.write(b);
-                else
-                    out2.write(b);
+            Printer p1=new Printer(out1,"");
+            Printer p2=new Printer(out2,"");
+            for (int i=0; i<size; i++){
+                if(i<part1){
+                    p1.print(ls.get(i));
+                }
+                else{
+                    p2.print(ls.get(i));
+                }
+
             }
             out1.close();
             out2.close();
